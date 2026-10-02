@@ -1,0 +1,10 @@
+#cloud-config
+packages:
+  - docker.io
+  - nginx
+runcmd:
+  - usermod -aG docker deploy
+  - systemctl enable --now docker
+  - systemctl enable --now nginx
+  - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+  - apt-get install -y nodejs
